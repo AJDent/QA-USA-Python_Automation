@@ -20,7 +20,7 @@ class TestUrbanRoutes:
                 print("Cannot connect to Urban Routes. Check the server is on and still running")
 
     def test_set_route(self):
-        #setting the address
+        #setting the address DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -32,7 +32,7 @@ class TestUrbanRoutes:
         assert expected_value_1 in actual_value_1, f"Expected '{expected_value_1}', but got '{actual_value_1}'"
 
     def test_select_plan(self):
-        #selecting the plan
+        #selecting the plan DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -44,7 +44,7 @@ class TestUrbanRoutes:
 
 
     def test_fill_phone_number(self):
-        #entering and verifying the phone number
+        #entering and verifying the phone number DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -55,7 +55,7 @@ class TestUrbanRoutes:
         assert expected_value in actual_value, f"Expected '{expected_value}', but got '{actual_value}'"
 
     def test_fill_card(self):
-        #entering card info
+        #entering card info DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -63,7 +63,7 @@ class TestUrbanRoutes:
         assert page.assert_card()
 
     def test_comment_for_driver(self):
-        #leaving a comment for the driver
+        #leaving a comment for the driver DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -74,7 +74,7 @@ class TestUrbanRoutes:
         assert expected_value in actual_value, f"Expected '{expected_value}', but got '{actual_value}'"
 
     def test_order_blanket_and_handkerchiefs(self):
-        #verifiying the slide works
+        #verifiying the slide works DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -83,7 +83,7 @@ class TestUrbanRoutes:
         assert page.blanket_handkerchiefs_check()
 
     def test_order_2_ice_creams(self):
-        #verifying that 2 ice creams are chosen
+        #verifying that 2 ice creams are chosen DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
@@ -95,7 +95,7 @@ class TestUrbanRoutes:
 
 
     def test_car_search_model_appears(self):
-        #verifying that the car search is activated
+        #verifying that the car search is activated DONE
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)

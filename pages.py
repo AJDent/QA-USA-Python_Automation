@@ -94,6 +94,7 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.SMART_BUTTON_TO_BOOK).click()
 
     def asserting_supportive(self):
+        #asserting the support option
         return self.driver.find_element(*self.ASSERT_SUPPORT_TITLE).text
 
     def assert_phone_number(self):
