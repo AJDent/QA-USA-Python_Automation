@@ -36,7 +36,9 @@ class TestUrbanRoutes:
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
+        time.sleep(2)
         page.selecting_supportive_plan()
+        time.sleep(2)
         actual_value = page.asserting_supportive()
         expected_value = "Supportive"
         assert expected_value in actual_value, f"Expected '{expected_value}', but got '{actual_value}'"
@@ -48,6 +50,7 @@ class TestUrbanRoutes:
         self.driver.get(data.URBAN_ROUTES_URL)
         page = pages.UrbanRoutesPage(self.driver)
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
+        time.sleep(2)
         page.selecting_supportive_plan()
         page.filling_in_the_phone_number(data.PHONE_NUMBER)
         actual_value = page.assert_phone_number()
@@ -80,6 +83,7 @@ class TestUrbanRoutes:
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
         page.selecting_supportive_plan()
         page.ordering_blanket_and_handkerchiefs()
+        time.sleep(2)
         assert page.blanket_handkerchiefs_check()
 
     def test_order_2_ice_creams(self):
@@ -89,6 +93,7 @@ class TestUrbanRoutes:
         page.set_addresses(data.ADDRESS_FROM, data.ADDRESS_TO)
         page.selecting_supportive_plan()
         page.ordering_ice_cream()
+        time.sleep(2)
         actual_value = page.assert_ice_cream()
         expected_value = "2"
         assert expected_value in actual_value, f"Expected '{expected_value}', but got '{actual_value}'"
@@ -102,10 +107,14 @@ class TestUrbanRoutes:
         page.selecting_supportive_plan()
         page.writing_a_comment_for_the_driver(data.MESSAGE_FOR_DRIVER)
         page.booking_taxi()
+        time.sleep(2)
         actual_value = page.assert_taxi_order()
         expected_value = "Car search"
         assert expected_value in actual_value, f"Expected '{expected_value}', but got '{actual_value}'"
 
+    @classmethod
+    def teardown_class(cls):
+        cls.driver.quit()
 
 
 # ✅ Ensure this code is OUTSIDE the class (after its definition)
@@ -119,6 +128,5 @@ if __name__ == "__main__":
     test.test_order_blanket_and_handkerchiefs()
     test.test_order_2_ice_creams()
 
-@classmethod
-def teardown_class(cls):
-    cls.driver.quit()
+
+

@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
 from helpers import retrieve_phone_code
-
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+import time
+#the wait import was not working
 
 
 class UrbanRoutesPage:
@@ -41,6 +44,7 @@ class UrbanRoutesPage:
         #This is setting the address in the beginning
         self.driver.find_element(*self.FROM_LOCATOR).send_keys(from_address)
         self.driver.find_element(*self.TO_LOCATOR).send_keys(to_address)
+        time.sleep(2)
         self.driver.find_element(*self.CALL_TAXI_BUTTON).click()
 
     def selecting_supportive_plan(self):
@@ -74,7 +78,10 @@ class UrbanRoutesPage:
 
     def ordering_blanket_and_handkerchiefs(self):
         #ordering the blanket and handkerchiefs
-        self.driver.find_element(*self.BLANKET_HANDKERCHIEFS_ON).click()
+        switches = self.driver.find_elements(*self.BLANKET_HANDKERCHIEFS_ON)
+        switches[0].click()
+        self.blanket_handkerchiefs_check()
+        #self.driver.find_element(*self.BLANKET_HANDKERCHIEFS_ON).click()
 
     def blanket_handkerchiefs_check(self):
         return self.driver.find_element(*self.BLANKET_HANDKERCHIEFS_CHECK).get_property("checked")
